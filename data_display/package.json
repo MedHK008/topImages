@@ -1,13 +1,14 @@
 {
-  "name": "topimages",
+  "name": "data_display",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon index.js"
   },
-  "author": "hades",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
