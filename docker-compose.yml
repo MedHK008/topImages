@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  data_fetching:
+    build: ./data_fetching
+    container_name: data_fetching
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/flickr
+    restart: always
+
+  data_display:
+    build: ./data_display
+    container_name: data_display
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/flickr
+    restart: always
+
+volumes:
+  mongo_data:
